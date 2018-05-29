@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+        <property name="location">
+            <value>information.properties</value>
+        </property>
+    </bean>
+
+    <bean id="a" class="task3.A">
+        <property name="name" value="${name.A}"/>
+    </bean>
+
+    <bean id="b" class="task3.B">
+        <constructor-arg ref="a"/>
+    </bean>
+
+    <bean id="c" class="task3.C">
+        <property name="d">
+            <bean class="task3.D" scope="prototype"/>
+        </property>
+    </bean>
+
+    <bean id="replacer" class="task3.Replacer" />
+
+    <bean id="e" class="task3.E">
+        <replaced-method name="show" replacer="replacer" />
+    </bean>
+
+    <bean id="f" class="task3.F" init-method="init" destroy-method="destroy"/>
+</beans>

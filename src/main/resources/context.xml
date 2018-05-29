@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="race" class="horse_race.configuration.xml.objects.Race">
+        <constructor-arg value="The best race ever"/>
+        <constructor-arg>
+            <bean class="java.util.ArrayList"/>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="horseService" class="horse_race.configuration.xml.services.HorseService">
+        <constructor-arg>
+            <list>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Lana"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Arabian"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="John"/>
+                            <constructor-arg value="36"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Mustang"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Quarter Horse"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Nikki"/>
+                            <constructor-arg value="23"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Adagio"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Thoroughbred"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Fred"/>
+                            <constructor-arg value="27"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Tequila"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Tennessee Walker"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Addy"/>
+                            <constructor-arg value="18"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Kelvin"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Morgan"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Rokky"/>
+                            <constructor-arg value="102"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Kalypso"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Paint"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Megan"/>
+                            <constructor-arg value="31"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="OJ"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Appaloosa"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Eva"/>
+                            <constructor-arg value="16"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+                <bean class="horse_race.configuration.xml.objects.Horse">
+                    <constructor-arg value="Zeus"/>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Breed">
+                            <constructor-arg value="Warmblood"/>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <bean class="horse_race.configuration.xml.objects.Rider">
+                            <constructor-arg value="Jack"/>
+                            <constructor-arg value="22"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="raceService" class="horse_race.configuration.xml.services.RaceService">
+        <constructor-arg ref="race"/>
+        <constructor-arg ref="horseService"/>
+        <constructor-arg ref="random"/>
+    </bean>
+    <bean id="emulationService" class="horse_race.configuration.xml.services.EmulationService">
+        <constructor-arg ref="raceService"/>
+    </bean>
+
+    <bean id="random" class="java.util.Random"/>
+</beans>
